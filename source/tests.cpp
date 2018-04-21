@@ -137,9 +137,45 @@ int main(int argc, char* argv[])
     }
 
     TEST_CASE("factorial", "[factorial]"){
-      REQUIRE(factorial(5)== 120);
-      REQUIRE(factorial(-5)== 0);
-      REQUIRE(factorial(10)== 3628800);
+       REQUIRE(factorial(5)== 120);
+       REQUIRE(factorial(-5)== 0);
+       REQUIRE(factorial(10)== 3628800);
 
 
     }
+
+    float binomial(int b, int a){ //a=k ,b=n mit n ueber k
+    
+      if(0<=a<=b){
+        if((factorial(a) != 0 && factorial(b) != 0 && factorial(b-a)) != 0){
+          float ergebnis = factorial(b) / (factorial(a) * factorial(b-a));
+          return ergebnis;
+        }
+        else{ 
+          return 0;
+          }
+
+      }
+      else{
+        return 0;
+      }
+    }
+
+    TEST_CASE("binomial", "[binomial]"){
+      REQUIRE(binomial(0,-2) == Approx(0.0));
+      REQUIRE(binomial(10,6) == Approx(210.0));
+      REQUIRE(binomial(6,4) == Approx(15.0));
+    }
+
+
+//bool is_prime(int zahk){
+  //bool prim=false;
+  //if(zahl<2 || zahl%2=0){
+    //return prim;
+  //}
+  //else{
+
+  //}
+
+//}
+
