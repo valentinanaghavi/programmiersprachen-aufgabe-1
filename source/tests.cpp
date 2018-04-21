@@ -1,4 +1,5 @@
 #define CATCH_CONFIG_RUNNER
+#define _USE_MATH_DEFINES
 #include "catch.hpp"
 #include <iostream>
 #include <cmath>
@@ -57,7 +58,7 @@ int main(int argc, char* argv[])
 
     int checksum(int zahl){
       int summe=0;
-      if(zahl<=0){  // ausgabe der 0 fungiert als fehlermeldung
+      if(zahl<=0){  // ausgabe der 0 fungiert als u.a. fehlermeldung
         return 0;
       }
       while(zahl != 0){
@@ -97,8 +98,48 @@ int main(int argc, char* argv[])
     TEST_CASE("fract", "[fract]"){
       REQUIRE(fract(1.234) == Approx(0.234));
       REQUIRE(fract(155.634) == Approx(0.634));
-      REQUIRE(fract(1.0) == Approx(0.0)); //noch nicht getestet
+      REQUIRE(fract(1.0) == Approx(0.0)); 
     }
-    
 
 
+    int zylinder(int r, int h){
+      if(r>0 && h>0){
+      float volumen = M_PI*(r*r)*h;
+      float oberflaeche = (2*M_PI*(r*r))+(2*M_PI*r*h);
+
+      std::cout <<"Volumen:" <<volumen << " Oberflaeche:"<< oberflaeche <<std::endl;
+
+      return 1;
+      }
+      else{
+        return 0; // ausgabe der 0 fungiert als u.a. fehlermeldung
+      }
+    }
+
+    TEST_CASE("zylinder", "[zylinder]"){
+      REQUIRE(zylinder(5,10) == 1);
+      REQUIRE(zylinder(-5,10) == 0);
+
+    }
+
+    int factorial (int zahl){
+      int produkt = 1;
+      if (zahl<=0){
+        return 0;
+      }
+      else {
+        while (zahl != 0){
+          produkt*=zahl;
+          zahl--;
+        }
+        return produkt;
+      }
+    }
+
+    TEST_CASE("factorial", "[factorial]"){
+      REQUIRE(factorial(5)== 120);
+      REQUIRE(factorial(-5)== 0);
+      REQUIRE(factorial(10)== 3628800);
+
+
+    }
