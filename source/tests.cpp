@@ -168,14 +168,31 @@ int main(int argc, char* argv[])
     }
 
 
-//bool is_prime(int zahk){
-  //bool prim=false;
-  //if(zahl<2 || zahl%2=0){
-    //return prim;
-  //}
-  //else{
+    bool is_prime(int zahl){
+      bool prim=true;
+      int k = 2;
 
-  //}
+      if(zahl < 2){
+        prim = false;
+        return prim;
+      }
+      else{
+       while(k< zahl){ //wurzel von zahl
+          if (zahl%k == 0){
+            prim = false;
+          }
+           k++;
 
-//}
+        }
+      return prim;
+      }
+    }
+
+    TEST_CASE("is_prim", "[is_prim]"){
+      REQUIRE(is_prime(7) == true);
+      REQUIRE(is_prime(53) == true);
+      REQUIRE(is_prime(12) == false);
+      REQUIRE(is_prime(1) == false);
+
+    }
 
