@@ -193,6 +193,21 @@ int main(int argc, char* argv[])
       REQUIRE(is_prime(53) == true);
       REQUIRE(is_prime(12) == false);
       REQUIRE(is_prime(1) == false);
-
     }
 
+    double mileToKilometer(double zahl){
+      if (zahl>0){
+      return (zahl/0.62137);
+      }
+      else{
+        return 0;
+      }
+    }
+
+    TEST_CASE("mileToKilometer", "[mileToKilometer]"){
+      REQUIRE(mileToKilometer(1) == Approx(1.60934));
+      REQUIRE(mileToKilometer(0) == Approx(0));
+      REQUIRE(mileToKilometer(34) == Approx(54.7177));
+
+
+    }
