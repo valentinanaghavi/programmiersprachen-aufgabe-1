@@ -145,8 +145,11 @@ int main(int argc, char* argv[])
     }
 
     float binomial(int b, int a){ //a=k ,b=n mit n ueber k
-    
+   
       if(0<=a<=b){
+        if(a==0){
+          return 1;
+        }
         if((factorial(a) != 0 && factorial(b) != 0 && factorial(b-a)) != 0){
           float ergebnis = factorial(b) / (factorial(a) * factorial(b-a));
           return ergebnis;
@@ -165,6 +168,7 @@ int main(int argc, char* argv[])
       REQUIRE(binomial(0,-2) == Approx(0.0));
       REQUIRE(binomial(10,6) == Approx(210.0));
       REQUIRE(binomial(6,4) == Approx(15.0));
+      REQUIRE(binomial(6,0) == Approx(1.0));
     }
 
 
